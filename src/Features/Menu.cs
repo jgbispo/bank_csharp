@@ -19,20 +19,42 @@ namespace Bank
       return Convert.ToInt32(option);
     }
 
-    public void CreateAccount(Arrays a)
+    public void CreateAccount(Arrays ay)
     {
-      MenuFeatures mf = new MenuFeatures();
-      ScreenCommands.ClearScreen();
-      Console.WriteLine("Create account");
-      mf.CreateAccount(a);
+      try
+      {
+        MenuFeatures mf = new MenuFeatures();
+        ScreenCommands.ClearScreen();
+        Console.WriteLine("Create account");
+        mf.CreateAccount(ay);
+      }
+      catch (Exception e)
+      {
+        ScreenCommands.ClearScreen();
+        Console.WriteLine(e.Message);
+        ScreenCommands.PauseError();
+        Menu m = new Menu();
+        m.CreateAccount(ay);
+      }
     }
 
     public void ListAccounts(Arrays ay)
     {
-      MenuFeatures mf = new MenuFeatures();
-      ScreenCommands.ClearScreen();
-      Console.WriteLine("List accounts");
-      mf.ListAccounts(ay);
+      try
+      {
+        MenuFeatures mf = new MenuFeatures();
+        ScreenCommands.ClearScreen();
+        Console.WriteLine("List accounts");
+        mf.ListAccounts(ay);
+      }
+      catch (Exception e)
+      {
+        ScreenCommands.ClearScreen();
+        Console.WriteLine(e.Message);
+        ScreenCommands.PauseError();
+        Menu m = new Menu();
+        m.ListAccounts(ay);
+      }
     }
 
     public void Deposit(Arrays ay)
@@ -49,7 +71,11 @@ namespace Bank
       }
       catch (Exception e)
       {
+        ScreenCommands.ClearScreen();
         Console.WriteLine(e.Message);
+        ScreenCommands.PauseError();
+        Menu m = new Menu();
+        m.Deposit(ay);
       }
     }
 
@@ -67,7 +93,11 @@ namespace Bank
       }
       catch (Exception e)
       {
+        ScreenCommands.ClearScreen();
         Console.WriteLine(e.Message);
+        ScreenCommands.PauseError();
+        Menu m = new Menu();
+        m.Withdraw(ay);
       }
     }
 
@@ -87,7 +117,11 @@ namespace Bank
       }
       catch (Exception e)
       {
+        ScreenCommands.ClearScreen();
         Console.WriteLine(e.Message);
+        ScreenCommands.PauseError();
+        Menu m = new Menu();
+        m.Transfer(ay);
       }
     }
 

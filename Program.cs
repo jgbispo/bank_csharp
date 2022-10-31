@@ -26,10 +26,10 @@ namespace Bank
             menu.Deposit(ay);
             break;
           case 4:
-            menu.Withdraw();
+            menu.Withdraw(ay);
             break;
           case 5:
-            menu.Transfer();
+            menu.Transfer(ay);
             break;
           case 6:
             menu.Exit();
