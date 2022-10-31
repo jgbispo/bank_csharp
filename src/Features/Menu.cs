@@ -44,13 +44,19 @@ namespace Bank
       int accountNumber = Convert.ToInt32(Console.ReadLine());
       Console.Write("Enter the value to deposit: ");
       double value = Convert.ToDouble(Console.ReadLine());
-      af.Deposit(accountNumber, value, ay);     
+      af.Deposit(accountNumber, value, ay);
     }
 
-    public void Withdraw()
+    public void Withdraw(Arrays ay)
     {
+      AccountFeatures af = new AccountFeatures();
       ScreenCommands.ClearScreen();
       Console.WriteLine("Withdraw");
+      Console.Write("Account number: ");
+      int accountNumber = Convert.ToInt32(Console.ReadLine());
+      Console.Write("Enter the value to withdraw: ");
+      double value = Convert.ToDouble(Console.ReadLine());
+      af.Withdraw(accountNumber, value, ay);
     }
 
     public void Transfer()
