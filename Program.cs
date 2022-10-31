@@ -6,41 +6,30 @@ namespace Bank
   {
     static void Main(string[] args)
     {
-      Menu menu = new Menu();
       Arrays ay = new Arrays();
+      // Login
+      Console.WriteLine("Welcome to the bank");
+      Console.Write("Type your account number: ");
+      int accountNumber = Convert.ToInt32(Console.ReadLine());
+      Console.Write("Type your password: ");
+      string password = Console.ReadLine()!;
 
-      int option;
-      do
+      // Check if the account exists and password is correct
+      if (Access.IsCorrectPassword(accountNumber, password, ay))
       {
-        option = Menu.Start();
-
-        switch (option)
+        if (Access.IsAdmin(accountNumber, ay))
         {
-          case 1:
-            Menu.CreateAccount(ay);
-            break;
-          case 2:
-            Menu.ListAccounts(ay);
-            break;
-          case 3:
-            Menu.Deposit(ay);
-            break;
-          case 4:
-            Menu.Withdraw(ay);
-            break;
-          case 5:
-            Menu.Transfer(ay);
-            break;
-          case 6:
-            Menu.Exit();
-            break;
-          default:
-            ScreenCommands.ClearScreen();
-            Console.WriteLine("Invalid option");
-            break;
+          AdminMenu.Start(ay);
         }
-
-      } while (option != 6);
+        else
+        {
+          CommonMenu.Start(ay);
+        }
+      }
+      else
+      {
+        Console.WriteLine("Incorrect password");
+      }
     }
   }
 }

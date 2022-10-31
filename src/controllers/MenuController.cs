@@ -6,7 +6,7 @@ namespace Bank
   {
     public static void CreateNewAccount(Arrays ay)
     {
-      Person p = CreatePerson();
+      PersonEntity p = CreatePerson();
       Account a = CreateAccount(ay, p);
 
       Console.WriteLine("Check that the data is correct");
@@ -29,7 +29,7 @@ namespace Bank
         ScreenCommands.ClearScreen();
         Console.WriteLine("Account created successfully");
         ScreenCommands.Pause();
-        Menu.Start();
+        AdminMenu.Start(ay);
       }
       else
       {
@@ -37,53 +37,64 @@ namespace Bank
         Console.WriteLine("Account creation canceled");
         ScreenCommands.Pause();
         ScreenCommands.ClearScreen();
-        Menu.Start();
+        AdminMenu.Start(ay);
       }
     }
 
-    public static Account CreateAccount(Arrays ay, Person p)
+    public static Account CreateAccount(Arrays ay, PersonEntity p)
     {
       Console.WriteLine("Type the account balance: ");
       double accountBalance = Convert.ToDouble(Console.ReadLine());
       Console.WriteLine("Type the account credit: ");
       double accountCredit = Convert.ToDouble(Console.ReadLine());
+      Console.WriteLine("Type the account password: ");
+      string accountPassword = Console.ReadLine()!;
 
       int accountNumber = ay.GetNextAccountNumber();
       Console.WriteLine($"The account number is {accountNumber} ");
-      Account a = new Account(p, accountBalance, accountCredit, accountNumber);
+      Account a = new Account(p, accountBalance, accountCredit, accountNumber, accountPassword);
       ScreenCommands.ClearScreen();
       a.PrintAccount();
       ScreenCommands.Pause();
       return a;
     }
 
-    public static Person CreatePerson()
+    public static PersonEntity CreatePerson()
     {
       ScreenCommands.ClearScreen();
       Console.WriteLine("Create Person");
       Console.WriteLine("Type the account owner name: ");
-      string? ownerName = Console.ReadLine();
+      string ownerName = Console.ReadLine()!;
       Console.WriteLine("Type the account owner document: ");
-      string? ownerDocument = Console.ReadLine();
+      string ownerDocument = Console.ReadLine()!;
       Console.WriteLine("Type the account owner address: ");
-      string? ownerAddress = Console.ReadLine();
+      string ownerAddress = Console.ReadLine()!;
       Console.WriteLine("Type the account owner phone number: ");
-      string? ownerPhoneNumber = Console.ReadLine();
+      string ownerPhoneNumber = Console.ReadLine()!;
       Console.WriteLine("Type the account owner email: ");
-      string? ownerEmail = Console.ReadLine();
+      string ownerEmail = Console.ReadLine()!;
 
-      Person p = new Person(ownerName!, ownerAddress!, ownerPhoneNumber!, ownerEmail!, ownerDocument!);
+      PersonEntity p = new PersonEntity(ownerName!, ownerAddress!, ownerPhoneNumber!, ownerEmail!, ownerDocument!);
       ScreenCommands.ClearScreen();
       p.PrintPerson();
       ScreenCommands.Pause();
       return p;
     }
-
-    public static void ListAccounts(Arrays ay)
+    public static void ListAllAccounts(Arrays ay)
     {
       ScreenCommands.ClearScreen();
       Console.WriteLine("List accounts");
       ay.PrintAccounts();
+      ScreenCommands.Pause();
+    }
+    public static void ListAccount(Arrays ay)
+    {
+      ScreenCommands.ClearScreen();
+      Console.WriteLine("List account");
+      Console.Write("Account number: ");
+      int accountNumber = Convert.ToInt32(Console.ReadLine());
+      Account a = ay.GetAccountByNumber(accountNumber)!;
+      a.PrintAccount();
       ScreenCommands.Pause();
     }
   }

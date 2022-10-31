@@ -9,7 +9,6 @@ namespace Bank
 
     public static void Pause()
     {
-      ClearScreen();
       Console.WriteLine("Press any key to continue...");
       Console.ReadKey();
     }

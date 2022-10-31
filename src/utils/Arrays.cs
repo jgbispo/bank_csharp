@@ -3,11 +3,16 @@ namespace Bank
   class Arrays
   {
     //Array of Persons
-    private Person[] persons = new Person[100];
+    private PersonEntity[] persons = new PersonEntity[100];
     //Array of Accounts
     private Account[] accounts = new Account[100];
 
-    public void AddPerson(Person person)
+    public Arrays()
+    {
+      AddAdmin();
+    }
+
+    public void AddPerson(PersonEntity person)
     {
       for (int i = 0; i < persons.Length; i++)
       {
@@ -31,7 +36,7 @@ namespace Bank
       }
     }
 
-    public Person[] GetPersons()
+    public PersonEntity[] GetPersons()
     {
       return persons;
     }
@@ -72,7 +77,7 @@ namespace Bank
       }
     }
 
-    public void PrintAccountsByPerson(Person person)
+    public void PrintAccountsByPerson(PersonEntity person)
     {
       for (int i = 0; i < accounts.Length; i++)
       {
@@ -90,7 +95,7 @@ namespace Bank
       }
     }
 
-    public Person? GetPersonByDocument(string document)
+    public PersonEntity? GetPersonByDocument(string document)
     {
       for (int i = 0; i < persons.Length; i++)
       {
@@ -162,6 +167,60 @@ namespace Bank
         }
       }
       return nextAccountNumber + 1;
+    }
+
+    public void RemoveAccount(int accountNumber)
+    {
+      for (int i = 0; i < accounts.Length; i++)
+      {
+        if (accounts[i] != null)
+        {
+          if (accounts[i].GetAccountNumber() == accountNumber)
+          {
+            accounts[i] = null!;
+            break;
+          }
+        }
+      }
+    }
+
+    public void RemovePerson(string document)
+    {
+      for (int i = 0; i < persons.Length; i++)
+      {
+        if (persons[i] != null)
+        {
+          if (persons[i].GetDocument() == document)
+          {
+            persons[i] = null!;
+            break;
+          }
+        }
+      }
+    }
+    public void UpdatePerson(PersonEntity person)
+    {
+      for (int i = 0; i < persons.Length; i++)
+      {
+        if (persons[i] != null)
+        {
+          if (persons[i].GetDocument() == person.GetDocument())
+          {
+            persons[i] = person;
+            break;
+          }
+        }
+      }
+    }
+
+    private void AddAdmin()
+    {
+      PersonEntity admin = new PersonEntity("Admin", "Rua do Admin", "3535", "admin@admin.com", "885522");
+      AddPerson(admin);
+      int accountNumber = GetNextAccountNumber();
+      Account account = new Account(admin, 1000, 1000, accountNumber, "admin");
+      account.AlterAdmin();
+      AddAccount(account);
     }
   }
 }

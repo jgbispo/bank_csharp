@@ -2,14 +2,16 @@ namespace Bank
 {
   class Account
   {
-    private Person? person;
+    private PersonEntity person;
     private int accountNumber;
     private double balance;
     private double credit;
+    private string password;
+    private bool isAdmin = false;
 
-    public Account(Person person, double balance, double credit, int accountNumber)
+    public Account(PersonEntity person, double balance, double credit, int accountNumber, string password)
     {
-      if (VerifyEmpty.IsObjectEmpty(person) || VerifyEmpty.IsDoubleEmpty(balance) || VerifyEmpty.IsDoubleEmpty(credit) || VerifyEmpty.IsIntEmpty(accountNumber))
+      if (VerifyEmpty.IsObjectEmpty(person) || VerifyEmpty.IsDoubleEmpty(balance) || VerifyEmpty.IsDoubleEmpty(credit) || VerifyEmpty.IsStringEmpty(password) || VerifyEmpty.IsIntEmpty(accountNumber))
       {
         throw new Exception("Invalid data");
       }
@@ -18,8 +20,18 @@ namespace Bank
       this.accountNumber = accountNumber;
       this.balance = balance;
       this.credit = credit;
+      this.password = password;
     }
 
+    public Boolean IsAdmin()
+    {
+      return this.isAdmin;
+    }
+
+    public void AlterAdmin()
+    {
+      this.isAdmin = !isAdmin;
+    }
 
     public double GetBalance()
     {
@@ -36,9 +48,21 @@ namespace Bank
       return this.accountNumber;
     }
 
-    public Person? GetPerson()
+    public PersonEntity GetPerson()
     {
       return this.person;
+    }
+
+
+    public string GetPassword()
+    {
+      return this.password;
+    }
+
+
+    public void SetPassword(string password)
+    {
+      this.password = password;
     }
 
     public void Withdraw(double value)
@@ -62,6 +86,9 @@ namespace Bank
       Console.WriteLine("Account balance: " + this.balance);
       Console.WriteLine("Account credit: " + this.credit);
       Console.WriteLine("Account owner: " + this.person!.GetName());
+      Console.WriteLine("Account owner document: " + this.person!.GetDocument());
+      Console.WriteLine("Account admin: " + this.isAdmin);
+      Console.WriteLine();
     }
   }
 }

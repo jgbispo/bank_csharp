@@ -1,16 +1,17 @@
 namespace Bank
 {
-  class Person
+  class PersonEntity
   {
-    private string? Name;
-    private string? Address;
-    private string? Phone;
-    private string? Email;
+    private string Name;
+    private string Address;
+    private string Phone;
+    private string Email;
     private string document;
 
-    public Person(string? name, string? address, string? phone, string? email, string document)
+
+    public PersonEntity(string name, string address, string phone, string email, string document)
     {
-      if (VerifyEmpty.IsStringEmpty(name) || VerifyEmpty.IsStringEmpty(address) || VerifyEmpty.IsStringEmpty(phone) || VerifyEmpty.IsStringEmpty(email) || VerifyEmpty.IsStringEmpty(document))
+      if (VerifyEmpty.IsStringEmpty(name) || VerifyEmpty.IsStringEmpty(address) || VerifyEmpty.IsStringEmpty(phone)  || VerifyEmpty.IsStringEmpty(email) || VerifyEmpty.IsStringEmpty(document))
       {
         throw new Exception("Invalid data");
       }
@@ -22,22 +23,22 @@ namespace Bank
       this.document = document;
     }
 
-    public string? GetName()
+    public string GetName()
     {
       return this.Name;
     }
 
-    public string? GetAddress()
+    public string GetAddress()
     {
       return this.Address;
     }
 
-    public string? GetPhone()
+    public string GetPhone()
     {
       return this.Phone;
     }
 
-    public string? GetEmail()
+    public string GetEmail()
     {
       return this.Email;
     }
@@ -46,6 +47,8 @@ namespace Bank
     {
       return this.document;
     }
+
+
 
     public void SetName(string name)
     {
