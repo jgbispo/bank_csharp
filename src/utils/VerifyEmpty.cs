@@ -18,5 +18,10 @@ namespace Bank
     {
       return value == 0;
     }
+
+    public static bool IsObjectEmpty(object? value)
+    {
+      return value == null;
+    }
   }
 }
