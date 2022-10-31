@@ -4,37 +4,10 @@ namespace Bank
 {
   class MenuFeatures
   {
-    public void CreateAccount(Arrays ay)
+    public static void CreateNewAccount(Arrays ay)
     {
-      ScreenCommands.ClearScreen();
-      Console.WriteLine("Create Person");
-      Console.WriteLine("Type the account owner name: ");
-      string? ownerName = Console.ReadLine();
-      Console.WriteLine("Type the account owner document: ");
-      string? ownerDocument = Console.ReadLine();
-      Console.WriteLine("Type the account owner address: ");
-      string? ownerAddress = Console.ReadLine();
-      Console.WriteLine("Type the account owner phone number: ");
-      string? ownerPhoneNumber = Console.ReadLine();
-      Console.WriteLine("Type the account owner email: ");
-      string? ownerEmail = Console.ReadLine();
-
-      Person p = new Person(ownerName!, ownerAddress!, ownerPhoneNumber!, ownerEmail!, ownerDocument!);
-      ScreenCommands.ClearScreen();
-      p.PrintPerson();
-      ScreenCommands.Pause();
-
-      Console.WriteLine("Type the account balance: ");
-      double accountBalance = Convert.ToDouble(Console.ReadLine());
-      Console.WriteLine("Type the account credit: ");
-      double accountCredit = Convert.ToDouble(Console.ReadLine());
-
-      int accountNumber = ay.GetNextAccountNumber();
-      Console.WriteLine($"The account number is {accountNumber} ");
-      Account a = new Account(p, accountBalance, accountCredit, accountNumber);
-      ScreenCommands.ClearScreen();
-      a.PrintAccount();
-      ScreenCommands.Pause();
+      Person p = CreatePerson();
+      Account a = CreateAccount(ay, p);
 
       Console.WriteLine("Check that the data is correct");
       Console.WriteLine("1 - Yes");
@@ -56,8 +29,7 @@ namespace Bank
         ScreenCommands.ClearScreen();
         Console.WriteLine("Account created successfully");
         ScreenCommands.Pause();
-        Menu menu = new Menu();
-        menu.Start();
+        Menu.Start();
       }
       else
       {
@@ -65,12 +37,49 @@ namespace Bank
         Console.WriteLine("Account creation canceled");
         ScreenCommands.Pause();
         ScreenCommands.ClearScreen();
-        Menu menu = new Menu();
-        menu.Start();
+        Menu.Start();
       }
     }
 
-    public void ListAccounts(Arrays ay)
+    public static Account CreateAccount(Arrays ay, Person p)
+    {
+      Console.WriteLine("Type the account balance: ");
+      double accountBalance = Convert.ToDouble(Console.ReadLine());
+      Console.WriteLine("Type the account credit: ");
+      double accountCredit = Convert.ToDouble(Console.ReadLine());
+
+      int accountNumber = ay.GetNextAccountNumber();
+      Console.WriteLine($"The account number is {accountNumber} ");
+      Account a = new Account(p, accountBalance, accountCredit, accountNumber);
+      ScreenCommands.ClearScreen();
+      a.PrintAccount();
+      ScreenCommands.Pause();
+      return a;
+    }
+
+    public static Person CreatePerson()
+    {
+      ScreenCommands.ClearScreen();
+      Console.WriteLine("Create Person");
+      Console.WriteLine("Type the account owner name: ");
+      string? ownerName = Console.ReadLine();
+      Console.WriteLine("Type the account owner document: ");
+      string? ownerDocument = Console.ReadLine();
+      Console.WriteLine("Type the account owner address: ");
+      string? ownerAddress = Console.ReadLine();
+      Console.WriteLine("Type the account owner phone number: ");
+      string? ownerPhoneNumber = Console.ReadLine();
+      Console.WriteLine("Type the account owner email: ");
+      string? ownerEmail = Console.ReadLine();
+
+      Person p = new Person(ownerName!, ownerAddress!, ownerPhoneNumber!, ownerEmail!, ownerDocument!);
+      ScreenCommands.ClearScreen();
+      p.PrintPerson();
+      ScreenCommands.Pause();
+      return p;
+    }
+
+    public static void ListAccounts(Arrays ay)
     {
       ScreenCommands.ClearScreen();
       Console.WriteLine("List accounts");

@@ -4,7 +4,7 @@ namespace Bank
 {
   class Menu
   {
-    public int Start()
+    public static int Start()
     {
       ScreenCommands.ClearScreen();
       Console.WriteLine("Welcome to the bank");
@@ -19,45 +19,41 @@ namespace Bank
       return Convert.ToInt32(option);
     }
 
-    public void CreateAccount(Arrays ay)
+    public static void CreateAccount(Arrays ay)
     {
       try
       {
-        MenuFeatures mf = new MenuFeatures();
         ScreenCommands.ClearScreen();
         Console.WriteLine("Create account");
-        mf.CreateAccount(ay);
+        MenuFeatures.CreateNewAccount(ay);
       }
       catch (Exception e)
       {
         ScreenCommands.ClearScreen();
         Console.WriteLine(e.Message);
         ScreenCommands.PauseError();
-        Menu m = new Menu();
-        m.CreateAccount(ay);
+        Menu.CreateAccount(ay);
       }
     }
 
-    public void ListAccounts(Arrays ay)
+    public static void ListAccounts(Arrays ay)
     {
       try
       {
-        MenuFeatures mf = new MenuFeatures();
         ScreenCommands.ClearScreen();
         Console.WriteLine("List accounts");
-        mf.ListAccounts(ay);
+        MenuFeatures.ListAccounts(ay);
       }
       catch (Exception e)
       {
         ScreenCommands.ClearScreen();
         Console.WriteLine(e.Message);
         ScreenCommands.PauseError();
-        Menu m = new Menu();
-        m.ListAccounts(ay);
+        Menu.ListAccounts(ay);
       }
     }
 
-    public void Deposit(Arrays ay)
+    public static void Deposit(Arrays ay)
     {
       try
       {
@@ -74,12 +70,11 @@ namespace Bank
         ScreenCommands.ClearScreen();
         Console.WriteLine(e.Message);
         ScreenCommands.PauseError();
-        Menu m = new Menu();
-        m.Deposit(ay);
+        Menu.Deposit(ay);
       }
     }
 
-    public void Withdraw(Arrays ay)
+    public static void Withdraw(Arrays ay)
     {
       try
       {
@@ -97,11 +92,11 @@ namespace Bank
         Console.WriteLine(e.Message);
         ScreenCommands.PauseError();
         Menu m = new Menu();
-        m.Withdraw(ay);
+        Menu.Withdraw(ay);
       }
     }
 
-    public void Transfer(Arrays ay)
+    public static void Transfer(Arrays ay)
     {
       try
       {
@@ -121,11 +116,11 @@ namespace Bank
         Console.WriteLine(e.Message);
         ScreenCommands.PauseError();
         Menu m = new Menu();
-        m.Transfer(ay);
+        Menu.Transfer(ay);
       }
     }
 
-    public void Exit()
+    public static void Exit()
     {
       ScreenCommands.ClearScreen();
       Console.WriteLine("Thank you for using our services");

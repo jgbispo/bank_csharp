@@ -12,27 +12,27 @@ namespace Bank
       int option;
       do
       {
-        option = menu.Start();
+        option = Menu.Start();
 
         switch (option)
         {
           case 1:
-            menu.CreateAccount(ay);
+            Menu.CreateAccount(ay);
             break;
           case 2:
-            menu.ListAccounts(ay);
+            Menu.ListAccounts(ay);
             break;
           case 3:
-            menu.Deposit(ay);
+            Menu.Deposit(ay);
             break;
           case 4:
-            menu.Withdraw(ay);
+            Menu.Withdraw(ay);
             break;
           case 5:
-            menu.Transfer(ay);
+            Menu.Transfer(ay);
             break;
           case 6:
-            menu.Exit();
+            Menu.Exit();
             break;
           default:
             ScreenCommands.ClearScreen();
