@@ -37,37 +37,58 @@ namespace Bank
 
     public void Deposit(Arrays ay)
     {
-      ScreenCommands.ClearScreen();
-      Console.WriteLine("Deposit");
-      Console.Write("Account number: ");
-      int accountNumber = Convert.ToInt32(Console.ReadLine());
-      Console.Write("Enter the value to deposit: ");
-      double value = Convert.ToDouble(Console.ReadLine());
-      AccountFeatures.Deposit(ay.GetAccountByNumber(accountNumber)!, value, ay);
+      try
+      {
+        ScreenCommands.ClearScreen();
+        Console.WriteLine("Deposit");
+        Console.Write("Account number: ");
+        int accountNumber = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter the value to deposit: ");
+        double value = Convert.ToDouble(Console.ReadLine());
+        AccountFeatures.Deposit(ay.GetAccountByNumber(accountNumber)!, value, ay);
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e.Message);
+      }
     }
 
     public void Withdraw(Arrays ay)
     {
-      ScreenCommands.ClearScreen();
-      Console.WriteLine("Withdraw");
-      Console.Write("Account number: ");
-      int accountNumber = Convert.ToInt32(Console.ReadLine());
-      Console.Write("Enter the value to withdraw: ");
-      double value = Convert.ToDouble(Console.ReadLine());
-      AccountFeatures.Withdraw(ay.GetAccountByNumber(accountNumber)!, value, ay);
+      try
+      {
+        ScreenCommands.ClearScreen();
+        Console.WriteLine("Withdraw");
+        Console.Write("Account number: ");
+        int accountNumber = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter the value to withdraw: ");
+        double value = Convert.ToDouble(Console.ReadLine());
+        AccountFeatures.Withdraw(ay.GetAccountByNumber(accountNumber)!, value, ay);
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e.Message);
+      }
     }
 
     public void Transfer(Arrays ay)
     {
-      ScreenCommands.ClearScreen();
-      Console.WriteLine("Transfer");
-      Console.Write("Origin account number: ");
-      int originAccountNumber = Convert.ToInt32(Console.ReadLine());
-      Console.Write("Destination account number: ");
-      int destinationAccountNumber = Convert.ToInt32(Console.ReadLine());
-      Console.Write("Enter the value to transfer: ");
-      double value = Convert.ToDouble(Console.ReadLine());
-      AccountFeatures.Transfer(ay.GetAccountByNumber(originAccountNumber)!, ay.GetAccountByNumber(destinationAccountNumber)!, value);
+      try
+      {
+        ScreenCommands.ClearScreen();
+        Console.WriteLine("Transfer");
+        Console.Write("Origin account number: ");
+        int originAccountNumber = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Destination account number: ");
+        int destinationAccountNumber = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter the value to transfer: ");
+        double value = Convert.ToDouble(Console.ReadLine());
+        AccountFeatures.Transfer(ay.GetAccountByNumber(originAccountNumber)!, ay.GetAccountByNumber(destinationAccountNumber)!, value);
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e.Message);
+      }
     }
 
     public void Exit()
