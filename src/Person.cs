@@ -6,11 +6,11 @@ namespace Bank
     private string? Address;
     private string? Phone;
     private string? Email;
-    private int cpf;
+    private string document;
 
-    Person(string name, string address, string phone, string email, int cpf)
+    public Person(string? name, string? address, string? phone, string? email, string document)
     {
-      if (VerifyEmpty.IsStringEmpty(name) || VerifyEmpty.IsStringEmpty(address) || VerifyEmpty.IsStringEmpty(phone) || VerifyEmpty.IsStringEmpty(email) || VerifyEmpty.IsIntEmpty(cpf))
+      if (VerifyEmpty.IsStringEmpty(name) || VerifyEmpty.IsStringEmpty(address) || VerifyEmpty.IsStringEmpty(phone) || VerifyEmpty.IsStringEmpty(email) || VerifyEmpty.IsStringEmpty(document))
       {
         throw new Exception("Invalid data");
       }
@@ -19,7 +19,7 @@ namespace Bank
       this.Address = address;
       this.Phone = phone;
       this.Email = email;
-      this.cpf = cpf;
+      this.document = document;
     }
 
     public string? GetName()
@@ -42,9 +42,9 @@ namespace Bank
       return this.Email;
     }
 
-    public int GetCpf()
+    public string GetDocument()
     {
-      return this.cpf;
+      return this.document;
     }
 
     public void SetName(string name)
@@ -67,9 +67,9 @@ namespace Bank
       this.Email = email;
     }
 
-    public void SetCpf(int cpf)
+    public void SetDocument(string document)
     {
-      this.cpf = cpf;
+      this.document = document;
     }
 
     public void PrintPerson()
@@ -78,7 +78,7 @@ namespace Bank
       Console.WriteLine("Address: " + this.Address);
       Console.WriteLine("Phone: " + this.Phone);
       Console.WriteLine("Email: " + this.Email);
-      Console.WriteLine("CPF: " + this.cpf);
+      Console.WriteLine("document: " + this.document);
     }
   }
 }
