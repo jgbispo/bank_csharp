@@ -13,10 +13,8 @@ namespace Bank
       destinationAccount.Deposit(value);
     }
 
-    public void Withdraw(int accountNumber, double value, Arrays ay)
+    public static void Withdraw(Account account, double value, Arrays ay)
     {
-      Account account = ay.GetAccountByNumber(accountNumber)!;
-
       if (account.GetBalance() < value)
       {
         throw new Exception("Insufficient balance");
@@ -25,17 +23,9 @@ namespace Bank
       account.Withdraw(value);
     }
 
-    public void Deposit(int accountNumber, double value, Arrays ay)
+    public static void Deposit(Account account, double value, Arrays ay)
     {
-      try
-      {
-        Account account = ay.GetAccountByNumber(accountNumber)!;
-        account.Deposit(value);
-      }
-      catch (Exception e)
-      {
-        Console.WriteLine(e.Message);
-      }
+      account.Deposit(value);
     }
 
     public static void ShowBalance(Account account)

@@ -37,32 +37,37 @@ namespace Bank
 
     public void Deposit(Arrays ay)
     {
-      AccountFeatures af = new AccountFeatures();
       ScreenCommands.ClearScreen();
       Console.WriteLine("Deposit");
       Console.Write("Account number: ");
       int accountNumber = Convert.ToInt32(Console.ReadLine());
       Console.Write("Enter the value to deposit: ");
       double value = Convert.ToDouble(Console.ReadLine());
-      af.Deposit(accountNumber, value, ay);
+      AccountFeatures.Deposit(ay.GetAccountByNumber(accountNumber)!, value, ay);
     }
 
     public void Withdraw(Arrays ay)
     {
-      AccountFeatures af = new AccountFeatures();
       ScreenCommands.ClearScreen();
       Console.WriteLine("Withdraw");
       Console.Write("Account number: ");
       int accountNumber = Convert.ToInt32(Console.ReadLine());
       Console.Write("Enter the value to withdraw: ");
       double value = Convert.ToDouble(Console.ReadLine());
-      af.Withdraw(accountNumber, value, ay);
+      AccountFeatures.Withdraw(ay.GetAccountByNumber(accountNumber)!, value, ay);
     }
 
-    public void Transfer()
+    public void Transfer(Arrays ay)
     {
       ScreenCommands.ClearScreen();
       Console.WriteLine("Transfer");
+      Console.Write("Origin account number: ");
+      int originAccountNumber = Convert.ToInt32(Console.ReadLine());
+      Console.Write("Destination account number: ");
+      int destinationAccountNumber = Convert.ToInt32(Console.ReadLine());
+      Console.Write("Enter the value to transfer: ");
+      double value = Convert.ToDouble(Console.ReadLine());
+      AccountFeatures.Transfer(ay.GetAccountByNumber(originAccountNumber)!, ay.GetAccountByNumber(destinationAccountNumber)!, value);
     }
 
     public void Exit()
