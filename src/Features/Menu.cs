@@ -21,18 +21,18 @@ namespace Bank
 
     public void CreateAccount(Arrays a)
     {
-      AccountFeatures af = new AccountFeatures();
+      MenuFeatures mf = new MenuFeatures();
       ScreenCommands.ClearScreen();
       Console.WriteLine("Create account");
-      af.CreateAccount(a);
+      mf.CreateAccount(a);
     }
 
     public void ListAccounts(Arrays ay)
     {
-      AccountFeatures af = new AccountFeatures();
+      MenuFeatures mf = new MenuFeatures();
       ScreenCommands.ClearScreen();
       Console.WriteLine("List accounts");
-      af.ListAccounts(ay);
+      mf.ListAccounts(ay);
     }
 
     public void Deposit(Arrays ay)
