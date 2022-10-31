@@ -19,10 +19,12 @@ namespace Bank
       {
         if (Access.IsAdmin(accountNumber, ay))
         {
+          ay.SetAccountNumber(accountNumber);
           AdminMenu.Start(ay);
         }
         else
         {
+          ay.SetAccountNumber(accountNumber);
           CommonMenu.Start(ay);
         }
       }

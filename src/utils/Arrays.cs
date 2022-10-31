@@ -7,6 +7,8 @@ namespace Bank
     //Array of Accounts
     private Account[] accounts = new Account[100];
 
+    private int accountNumber;
+
     public Arrays()
     {
       AddAdmin();
@@ -22,6 +24,16 @@ namespace Bank
           break;
         }
       }
+    }
+
+    public void SetAccountNumber(int accountNumber)
+    {
+      this.accountNumber = accountNumber;
+    }
+
+    public int GetAccountNumber()
+    {
+      return this.accountNumber;
     }
 
     public void AddAccount(Account account)
