@@ -1,5 +1,3 @@
-using System;
-
 namespace Bank
 {
   class Person
