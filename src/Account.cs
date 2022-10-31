@@ -1,5 +1,3 @@
-using System;
-
 namespace Bank
 {
   class Account
@@ -9,7 +7,7 @@ namespace Bank
     private double balance;
     private double credit;
 
-    Account(Person person, double balance, double credit)
+    public Account(Person person, double balance, double credit)
     {
       if (VerifyEmpty.IsObjectEmpty(person) || VerifyEmpty.IsDoubleEmpty(balance) || VerifyEmpty.IsDoubleEmpty(credit))
       {
