@@ -5,7 +5,7 @@ namespace Bank
     //Array of Persons
     private PersonEntity[] persons = new PersonEntity[100];
     //Array of Accounts
-    private Account[] accounts = new Account[100];
+    private AccountEntity[] accounts = new AccountEntity[100];
 
     private int accountNumber;
 
@@ -36,7 +36,7 @@ namespace Bank
       return this.accountNumber;
     }
 
-    public void AddAccount(Account account)
+    public void AddAccount(AccountEntity account)
     {
       for (int i = 0; i < accounts.Length; i++)
       {
@@ -53,9 +53,22 @@ namespace Bank
       return persons;
     }
 
-    public Account[] GetAccounts()
+    public AccountEntity[] GetAccounts()
     {
       return accounts;
+    }
+
+    public void EditAccount(int accountNumber, string accountPassword, double accountLimit)
+    {
+      for (int i = 0; i < accounts.Length; i++)
+      {
+        if (accounts[i] != null && accounts[i].GetAccountNumber() == accountNumber)
+        {
+          accounts[i].SetPassword(accountPassword);
+          accounts[i].SetCredit(accountLimit);
+          break;
+        }
+      }
     }
 
     public void PrintPersons()
@@ -80,10 +93,7 @@ namespace Bank
       {
         if (accounts[i] != null)
         {
-          Console.WriteLine("Account number: " + accounts[i].GetAccountNumber());
-          Console.WriteLine("Account balance: " + accounts[i].GetBalance());
-          Console.WriteLine("Account credit: " + accounts[i].GetCredit());
-          Console.WriteLine("Account owner: " + accounts[i].GetPerson()!.GetName());
+          accounts[i].PrintAccount();
           Console.WriteLine();
         }
       }
@@ -122,7 +132,7 @@ namespace Bank
       throw new Exception("Person not exists");
     }
 
-    public Account? GetAccountByNumber(int accountNumber)
+    public AccountEntity? GetAccountByNumber(int accountNumber)
     {
       for (int i = 0; i < accounts.Length; i++)
       {
@@ -230,7 +240,7 @@ namespace Bank
       PersonEntity admin = new PersonEntity("Admin", "Rua do Admin", "3535", "admin@admin.com", "885522");
       AddPerson(admin);
       int accountNumber = GetNextAccountNumber();
-      Account account = new Account(admin, 1000, 1000, accountNumber, "admin");
+      AccountEntity account = new AccountEntity(admin, 1000, 1000, accountNumber, "admin");
       account.AlterAdmin();
       AddAccount(account);
     }

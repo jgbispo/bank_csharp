@@ -18,31 +18,12 @@ namespace Bank
       return Convert.ToInt32(option);
     }
 
-    public static void Account(Arrays ay)
-    {
-      MenuController.Account(ay);
-    }
-
-    public static void Deposit(Arrays ay)
-    {
-      MenuController.Deposit(ay);
-    }
-
-    public static void Withdraw(Arrays ay)
-    {
-      MenuController.Withdraw(ay);
-    }
-
-    public static void Transfer(Arrays ay)
-    {
-      MenuController.Transfer(ay);
-    }
-
     public static void Exit()
     {
       ScreenCommands.ClearScreen();
       Console.WriteLine("Thank you for using our services");
       ScreenCommands.Pause();
+      Program.Main();
     }
   }
 }

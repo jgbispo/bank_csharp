@@ -8,7 +8,7 @@ namespace Bank
     {
       ScreenCommands.ClearScreen();
       Console.WriteLine("List account");
-      Account a = ay.GetAccountByNumber(ay.GetAccountNumber())!;
+      AccountEntity a = ay.GetAccountByNumber(ay.GetAccountNumber())!;
       a.PrintAccount();
       ScreenCommands.Pause();
     }

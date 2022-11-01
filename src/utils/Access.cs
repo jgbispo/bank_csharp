@@ -6,7 +6,7 @@ namespace Bank
   {
     public static bool IsCorrectPassword(int accountNumber, string password, Arrays ay)
     {
-      Account account = ay.GetAccountByNumber(accountNumber)!;
+      AccountEntity account = ay.GetAccountByNumber(accountNumber)!;
       
       if (account.GetPassword() == password)
       {
@@ -20,7 +20,7 @@ namespace Bank
 
     public static bool IsAdmin(int accountNumber, Arrays ay)
     {
-      Account account = ay.GetAccountByNumber(accountNumber)!;
+      AccountEntity account = ay.GetAccountByNumber(accountNumber)!;
       return account.IsAdmin();
     }
   }

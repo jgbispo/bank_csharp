@@ -1,6 +1,6 @@
 namespace Bank
 {
-  class Account
+  class AccountEntity
   {
     private PersonEntity person;
     private int accountNumber;
@@ -9,7 +9,7 @@ namespace Bank
     private string password;
     private bool isAdmin = false;
 
-    public Account(PersonEntity person, double balance, double credit, int accountNumber, string password)
+    public AccountEntity(PersonEntity person, double balance, double credit, int accountNumber, string password)
     {
       if (VerifyEmpty.IsObjectEmpty(person) || VerifyEmpty.IsDoubleEmpty(balance) || VerifyEmpty.IsDoubleEmpty(credit) || VerifyEmpty.IsStringEmpty(password) || VerifyEmpty.IsIntEmpty(accountNumber))
       {
@@ -59,10 +59,14 @@ namespace Bank
       return this.password;
     }
 
-
     public void SetPassword(string password)
     {
       this.password = password;
+    }
+
+    public void SetCredit(double credit)
+    {
+      this.credit = credit;
     }
 
     public void Withdraw(double value)
@@ -83,9 +87,9 @@ namespace Bank
     public void PrintAccount()
     {
       Console.WriteLine("Account number: " + this.accountNumber);
+      Console.WriteLine("Account owner: " + this.person!.GetName());
       Console.WriteLine("Account balance: " + this.balance);
       Console.WriteLine("Account credit: " + this.credit);
-      Console.WriteLine("Account owner: " + this.person!.GetName());
       Console.WriteLine("Account owner document: " + this.person!.GetDocument());
       Console.WriteLine("Account admin: " + this.isAdmin);
       Console.WriteLine();

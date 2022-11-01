@@ -4,9 +4,14 @@ namespace Bank
 {
   class Program
   {
-    static void Main(string[] args)
+    public static void Main()
     {
       Arrays ay = new Arrays();
+      Start(ay);
+    }
+
+    public static void Start(Arrays ay)
+    {
       // Login
       Console.WriteLine("Welcome to the bank");
       Console.Write("Type your account number: ");
