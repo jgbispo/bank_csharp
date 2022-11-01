@@ -18,9 +18,15 @@ namespace Bank
       ChooseOption(Convert.ToInt32(option), ay);
     }
 
-    public static void ChooseOption(int option, Arrays ay)
+    public static void ChooseOption(int? option, Arrays ay)
     {
       ScreenCommands.ClearScreen();
+      if (option == null)
+      {
+        Console.WriteLine("Invalid option");
+        ScreenCommands.PauseError();
+        Start(ay);
+      }
       switch (option)
       {
         case 1:
@@ -37,6 +43,13 @@ namespace Bank
           break;
         case 5:
           MenuControllerAdmin.Exit(ay);
+          break;
+        case 00:
+          ScreenCommands.ClearScreen();
+          Console.WriteLine("Test area");
+          Console.Write("Must be created: ");
+          int accounts = Convert.ToInt32(Console.ReadLine());
+          MenuControllerAdmin.CreateAccount(ay, accounts);
           break;
         default:
           Console.WriteLine("Invalid option");

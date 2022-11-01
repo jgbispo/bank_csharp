@@ -101,5 +101,42 @@ namespace Bank
       ScreenCommands.Pause();
       Program.Start(ay);
     }
+
+    public static void CreateAccount(Arrays ay, int accounts)
+    {
+      ScreenCommands.ClearScreen();
+      if (accounts <= 0)
+      {
+        CreateAccount(ay);
+      }
+      else
+      {
+        Console.WriteLine("Create accounts for Test");
+        for (int i = 0; i < accounts; i++)
+        {
+          string ownerName = $"Test - {i}";
+          string ownerDocument = $"Test - {i}";
+          string ownerAddress = $"Test - {i}";
+          string ownerPhoneNumber = $"Test - {i}";
+          string ownerEmail = $"Test - {i}";
+          PersonEntity p = new PersonEntity(ownerName, ownerDocument, ownerAddress, ownerPhoneNumber, ownerEmail);
+
+          int accountNumber = ay.GetNextAccountNumber();
+          double accountBalance = 1200;
+          double accountLimit = 1200;
+          string accountPassword = "123";
+          AccountEntity a = new AccountEntity(p, accountBalance, accountLimit, accountNumber, accountPassword);
+
+          ay.AddPerson(p);
+          ay.AddAccount(a);
+
+          ScreenCommands.ClearScreen();
+          Console.WriteLine("Accounts created successfully");
+          ScreenCommands.Pause();
+          AdminMenu.Start(ay);
+        }
+      }
+
+    }
   }
 }
